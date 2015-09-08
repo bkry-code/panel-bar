@@ -268,7 +268,7 @@ class PanelBar {
 
       /* iframes */
       $block .= '<div class="panelbar__preview">';
-      $block .= '<iframe class="panelbar__preview--edit" data-src="'.$this->site->url().'/panel/pages/'.$this->page->uri().'/edit"></iframe>';
+      $block .= '<iframe class="panelbar__preview--edit" data-src="'.$this->site->url().'/panel/#/pages/show/'.$this->page->uri().'"></iframe>';
       $block .= '<iframe class="panelbar__preview--view" data-src="'.$this->page->url().'?pbdisable=true"></iframe>';
       $block .= '</div>';
 
