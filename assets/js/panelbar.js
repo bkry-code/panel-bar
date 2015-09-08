@@ -97,7 +97,7 @@ if (window.jQuery && enhancedJS === true) {
       e.preventDefault();
 
       // Button & Label
-      $(this).find('i').toggleClass('fa-times-circle-o fa-desktop');
+      $(this).find('i').toggleClass('fa-compress fa-desktop');
 
 
       // Iframes
