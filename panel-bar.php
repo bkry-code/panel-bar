@@ -6,6 +6,7 @@ class PanelBar {
                         'panel',
                         'add',
                         'edit',
+                        'preview',
                         'toggle',
                         'languages',
                         'logout',
@@ -39,24 +40,32 @@ class PanelBar {
   /* Public methods to display panel bar or its parts */
 
   public static function show($elements = null, $css = true, $js = true) {
-    $self = new self($elements);
-    return $self->__output($css, $js);
+    if(!get('pbdisable')) {
+      $self = new self($elements);
+      return $self->__output($css, $js);
+    }
   }
 
   public static function hide($elements = null, $css = true, $js = true) {
-    $self = new self($elements);
-    return $self->__output($css, $js, true);
+    if(!get('pbdisable')) {
+      $self = new self($elements);
+      return $self->__output($css, $js, true);
+    }
   }
 
   public static function css() {
-    $position = c::get('panelbar.position', 'top');
-    $self = new self();
-    return $self->__getCSS($position);
+    if(!get('pbdisable')) {
+      $position = c::get('panelbar.position', 'top');
+      $self = new self();
+      return $self->__getCSS($position);
+    }
   }
 
   public static function js() {
-    $self = new self();
-    return $self->__getJS();
+    if(!get('pbdisable')) {
+      $self = new self();
+      return $self->__getJS();
+    }
   }
 
   public static function defaults() {
@@ -244,6 +253,28 @@ class PanelBar {
       'label'  => 'Edit',
       'mobile' => 'icon',
     ));
+  }
+
+  protected function preview() {
+    if (c::get('panelbar.enhancedJS', false)) {
+      /* button */
+      $class  = 'panelbar__btn panelbar--preview';
+      $block  = '<div class="'.$class.'">';
+      $block .= '<a href="#">';
+      $block .= '<i class="fa fa-desktop"></i>';
+      $block .= '<span class="not-mobile">Preview</span>';
+      $block .= '</a>';
+      $block .= '</div>';
+
+      /* iframes */
+      $block .= '<div class="panelbar__preview">';
+      $block .= '<iframe class="panelbar__preview--edit" data-src="'.$this->site->url().'/panel/pages/'.$this->page->uri().'/edit"></iframe>';
+      $block .= '<iframe class="panelbar__preview--view" data-src="'.$this->page->url().'?pbdisable=true"></iframe>';
+      $block .= '</div>';
+
+
+      return $block;
+    }
   }
 
   protected function toggle() {

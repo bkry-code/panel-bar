@@ -232,6 +232,40 @@
  display: none;
 }
 
+/* Element: Preview */
+
+.panelbar__preview {
+
+  display: none;
+  position: fixed;
+  top: 48px;
+  height: calc(100% - 48px);
+  width: 100%;
+
+  z-index: 300;
+  background-color: #efefef;
+
+  &.show {
+    display: block;
+  }
+
+  &--view,
+  &--edit {
+    width: 50%;
+    height: 100%;
+    display: inline-block;
+    overflow-y: scroll;
+
+  }
+
+}
+
+html.pb_disable,
+body.pb_disable {
+  overflow: hidden;
+}
+
+
 /* Mobile */
 
 @media (max-width: 750px) {
