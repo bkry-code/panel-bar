@@ -39,6 +39,10 @@ Or with the following if you want the panel bar hidden on load:
 
 You can toggle the visibility of the panel bar on the right side, but only if your website already loads jQuery. If not, panel bar will simply hide the toggle switch and display the panel bar always.
 
+## fonts.com issue
+
+When using fonts.com, the script from fonts.com has to be placed after the panelbar function to work in Google Crome.
+
 # Options <a id="Options"></a>
 
 ## Output CSS / JS separately
