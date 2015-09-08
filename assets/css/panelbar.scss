@@ -254,8 +254,12 @@
     width: 50%;
     height: 100%;
     display: inline-block;
-    overflow-y: scroll;
+    overflow-y: auto;
 
+  }
+
+  &--edit {
+    border-right: 2px solid #ddd;
   }
 
 }
@@ -265,6 +269,18 @@ body.pb_disable {
   overflow: hidden;
 }
 
+@media (min-width: 1200px) {
+  .panelbar__preview {
+
+    &--edit {
+      width: 40%;
+    }
+
+    &--view {
+      width: 60%
+    }
+  }
+}
 
 /* Mobile */
 
