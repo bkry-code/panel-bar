@@ -142,7 +142,9 @@ function PBPreviewInitEdit(editIF, viewIF) {
     edit.find('body').css({'margin-top':'-48px'});
 
     var offset = edit.find('.form').offset();
-    edit.scrollTop(offset.top - 10);
+    if(offset !== undefined) {
+      edit.scrollTop(offset.top - 10);
+    }
 
     edit.find('.btn-submit').on('click', function() {
       setTimeout(function() {
