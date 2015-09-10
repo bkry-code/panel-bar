@@ -255,7 +255,14 @@
     height: 100%;
     display: inline-block;
     overflow-y: auto;
-
+    border: none;
+    box-sizing: border-box;
+  }
+  
+  &--view {
+    position: fixed;
+    top: 48px;
+    right: 0;
   }
 
   &--edit {
